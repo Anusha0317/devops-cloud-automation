@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh ubuntu@51.20.34.137 << 'EOF'
-          cd app
+          cd app/app
           git pull origin main
           docker stop myweb || true
           docker rm myweb || true
