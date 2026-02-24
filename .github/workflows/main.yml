@@ -24,7 +24,7 @@ jobs:
   run: |
     ssh ubuntu@51.20.34.137 << 'EOF'
     cd app
-    git pull
+    git pull origin main
     docker stop myweb || true
     docker rm myweb || true
     docker build -t anusha-web .
