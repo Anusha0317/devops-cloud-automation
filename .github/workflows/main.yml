@@ -21,12 +21,12 @@ jobs:
           ssh-keyscan -H 51.20.34.137 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
-  run: |
-    ssh ubuntu@51.20.34.137 << 'EOF'
-    cd app
-    git pull origin main
-    docker stop myweb || true
-    docker rm myweb || true
-    docker build -t anusha-web .
-    docker run -d -p 80:80 --name myweb anusha-web
-    EOF
+        run: |
+          ssh ubuntu@51.20.34.137 << 'EOF'
+          cd app
+          git pull origin main
+          docker stop myweb || true
+          docker rm myweb || true
+          docker build -t anusha-web .
+          docker run -d -p 80:80 --name myweb anusha-web
+          EOF
