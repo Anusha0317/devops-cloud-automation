@@ -23,7 +23,13 @@ jobs:
       - name: Deploy using Ansible
         run: |
           ssh ubuntu@54.247.226.78 << 'EOF'
+            sudo apt update
+            sudo apt install -y ansible
+
+            git config --global --add safe.directory /home/ubuntu/devops-cloud-automation
+
             cd /home/ubuntu/devops-cloud-automation
             git pull origin main
+
             ansible-playbook -i ansible/inventory ansible/nginx-playbook.yml
           EOF
