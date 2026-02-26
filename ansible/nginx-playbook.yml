@@ -16,29 +16,34 @@
         state: started
         enabled: yes
 
+    - name: Install Python Docker SDK
+      apt:
+        name: python3-docker
+        state: present
+
     - name: Remove old container if exists
-      docker_container:
+      community.docker.docker_container:
         name: mycontainer
         state: absent
         force_kill: yes
       ignore_errors: yes
 
     - name: Remove old image if exists
-      docker_image:
+      community.docker.docker_image:
         name: myapp
         state: absent
       ignore_errors: yes
 
     - name: Build Docker image
-      docker_image:
+      community.docker.docker_image:
         name: myapp
         source: build
         build:
           path: /home/ubuntu/devops-cloud-automation/app
-        nocache: yes
+        state: present
 
     - name: Run Docker container
-      docker_container:
+      community.docker.docker_container:
         name: mycontainer
         image: myapp
         state: started
