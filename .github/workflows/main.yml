@@ -23,7 +23,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 54.247.226.78 >> ~/.ssh/known_hosts
+  
 
       - name: Run Ansible Playbook
         run: |
