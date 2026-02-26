@@ -18,12 +18,19 @@ jobs:
           sudo apt update
           sudo apt install -y ansible
 
+      - name: Install Docker Collection
+        run: |
+          ansible-galaxy collection install community.docker
+
       - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-  
+
+      - name: Disable Host Key Checking
+        run: |
+          echo "ANSIBLE_HOST_KEY_CHECKING=False" >> $GITHUB_ENV
 
       - name: Run Ansible Playbook
         run: |
