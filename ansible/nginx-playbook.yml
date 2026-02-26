@@ -1,5 +1,6 @@
 - name: Deploy Dockerized Nginx App
-  hosts: all
+  hosts: localhost
+  connection: local
   become: yes
 
   tasks:
