@@ -1,2 +1,2 @@
 [web]
-54.247.226.78 ansible_user=ubuntu ansible_ssh_private_key_file=~/anu-key.pem
+51.20.34.137 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
