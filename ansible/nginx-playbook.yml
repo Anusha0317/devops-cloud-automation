@@ -38,6 +38,7 @@
       community.docker.docker_image:
         name: myapp
         source: build
+        force_source: yes
         build:
           path: /home/ubuntu/devops-cloud-automation/app
         state: present
