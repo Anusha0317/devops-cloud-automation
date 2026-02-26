@@ -1,2 +1,1 @@
-[web]
-54.247.226.78 ansible_user=ubuntu ansible_ssh_private_key_file=~/anu-key.pem
+localhost ansible_connection=local
