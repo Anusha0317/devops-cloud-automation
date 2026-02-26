@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Setup SSH
@@ -22,8 +22,8 @@ jobs:
 
       - name: Deploy using Ansible
         run: |
-          ssh ubuntu@54.247.226.78 << 'EOF'
-            sudo apt update
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@54.247.226.78 << 'EOF'
+            sudo apt update -y
             sudo apt install -y ansible
 
             git config --global --add safe.directory /home/ubuntu/devops-cloud-automation
