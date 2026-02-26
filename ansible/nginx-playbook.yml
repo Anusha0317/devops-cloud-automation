@@ -1,14 +1,47 @@
-- hosts: web
+- name: Deploy Dockerized Nginx App
+  hosts: all
   become: yes
+
   tasks:
-    - name: Install nginx
+
+    - name: Ensure Docker is installed
       apt:
-        name: nginx
+        name: docker.io
         state: present
         update_cache: yes
 
-    - name: Start nginx
+    - name: Ensure Docker service is running
       service:
-        name: nginx
+        name: docker
         state: started
         enabled: yes
+
+    - name: Remove old container (if exists)
+      docker_container:
+        name: mycontainer
+        state: absent
+        force_kill: yes
+      ignore_errors: yes
+
+    - name: Remove old image (if exists)
+      docker_image:
+        name: myapp
+        state: absent
+      ignore_errors: yes
+
+    - name: Build Docker image (force rebuild)
+      docker_image:
+        name: myapp
+        source: build
+        build:
+          path: /home/ubuntu/devops-cloud-automation/app
+          nocache: yes
+
+    - name: Run Docker container
+      docker_container:
+        name: mycontainer
+        image: myapp
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
