@@ -37,4 +37,4 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ans
+          ansible-playbook -i ansible/inventory ansible/nginx-playbook.yml
