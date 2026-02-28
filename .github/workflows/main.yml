@@ -33,11 +33,8 @@ jobs:
 
       - name: Pull Latest Code on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@54.247.226.78 "
-            cd /home/ubuntu/devops-cloud-automation &&
-            git pull origin main
-          "
+          ssh -i anu-key.pem -o StrictHostKeyChecking=no ubuntu@54.247.226.78 "cd devops-cloud-automation && git pull"
 
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook -i ansible/inventory ansible/nginx-playbook.yml
+          ans
