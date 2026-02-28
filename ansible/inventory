@@ -1,2 +1,2 @@
 [web]
-webserver ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
+54.247.226.78 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_ssh_common_args='-o StrictHostKeyChecking=no'
