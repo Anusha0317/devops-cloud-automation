@@ -22,11 +22,10 @@ jobs:
         run: |
           ansible-galaxy collection install community.docker
 
-      - name: Setup SSH Key
+      - name: Create SSH Key
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.EC2_KEY }}" > anu-key.pem
+          chmod 400 anu-key.pem
 
       - name: Disable Host Key Checking
         run: |
