@@ -71,14 +71,15 @@ app/ → Web application source code and Dockerfile.
 
 *Step-by-Step Execution
 
-1️ Clone Repository
-git clone <your-repo-url>
-cd devops-cloud-automation
+1️ Clone Repositor
+      git clone <your-repo-url>
+      cd devops-cloud-automation
 
 2️ Provision Infrastructure (Terraform)
-cd terraform
-terraform init
-terraform apply
+
+     cd terraform
+     terraform init
+    terraform apply
 This will:
 Create an Ubuntu EC2 instance
 Configure security groups (allow SSH and HTTP)
@@ -86,8 +87,8 @@ Output the EC2 public IP address
 
 3 Configure Server & Deploy Application (Ansible)
 
-cd ../ansible
-ansible-playbook -i inventory nginx-playbook.yml
+     cd ../ansible
+     ansible-playbook -i inventory nginx-playbook.yml
 
 This playbook automatically:
 Installs Docker
@@ -99,8 +100,9 @@ Sets restart policy to always
 No manual Docker commands are required.
 
 4️ Verify Deployment
+
 Open your browser:
-http://<EC2_PUBLIC_IP>
+       http://<EC2_PUBLIC_IP>
 If the page loads successfully, it confirms:
 EC2 is running
 Docker is installed
@@ -109,6 +111,7 @@ Port 80 is accessible
 Application is deployed successfully
 
 *CI/CD Pipeline (GitHub Actions)
+
 The GitHub Actions workflow automates deployment.
 On every push to the main branch:
 The workflow is triggered
@@ -117,6 +120,7 @@ Ansible playbook runs automatically
 Docker image is rebuilt
 Container is redeployed
 Application updates instantly
+
 This ensures continuous deployment with zero manual intervention.
 
 
